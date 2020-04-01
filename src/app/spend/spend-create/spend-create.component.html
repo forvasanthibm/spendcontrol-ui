@@ -13,10 +13,11 @@
             <mat-hint align="left">Not more then 50 characters long.</mat-hint>
             <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
             <mat-error *ngIf="hasError('email', 'maxlength')">You have more than 50 characters</mat-error>
+            <mat-error *ngIf="hasError('email', 'email')">Invalid email address</mat-error>
           </mat-form-field>
         </div>
         <br>
-        <div flex fxLayoutGap="30px">
+        <div>
           <mat-label>Spend Type</mat-label>
           <mat-radio-group formControlName="spendType" id="spendType">
             <mat-radio-button *ngFor="let item of spendTypes" [value]="item.value">
@@ -49,9 +50,10 @@
         <div>
           <mat-form-field>
             <input matInput type="text" placeholder="Invoice Amount" formControlName="invoiceAmount" id="invoiceAmount">
-            <mat-hint align="left">Not more then 30 characters long.</mat-hint>
+            <mat-hint align="left">Not more then 10 characters long.</mat-hint>
             <mat-error *ngIf="hasError('invoiceAmount', 'required')">Invoice Amount is required</mat-error>
-            <mat-error *ngIf="hasError('invoiceAmount', 'maxlength')">You have more than 30 characters</mat-error>
+            <mat-error *ngIf="hasError('invoiceAmount', 'maxlength')">You have more than 10 characters</mat-error>
+            <mat-error *ngIf="hasError('invoiceAmount', 'pattern')">Amount should be number</mat-error>
           </mat-form-field>
         </div>
         <br>

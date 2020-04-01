@@ -45,11 +45,11 @@ export class SpendUpdateComponent implements OnInit {
       response => {
         this.spend = response;
         this.registerForm = new FormGroup({
-          email: new FormControl(this.spend.email, [Validators.required, Validators.maxLength(50)]),
+          email: new FormControl(this.spend.email, [Validators.required, Validators.maxLength(50), Validators.email]),
           spendType: new FormControl(this.spend.spendType, [Validators.required]),
           category: new FormControl(this.spend.category, [Validators.required, Validators.maxLength(30)]),
           vendor: new FormControl(this.spend.vendor, [Validators.required, Validators.maxLength(30)]),
-          invoiceAmount: new FormControl(this.spend.invoiceAmount, [Validators.required, Validators.maxLength(10)]),
+          invoiceAmount: new FormControl(this.spend.invoiceAmount, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')]),
           spendDate: new FormControl(moment(this.spend.spendDate).toDate(), [Validators.required]),
         });
       },

@@ -26,11 +26,11 @@ export class SpendCreateComponent implements OnInit {
   ngOnInit() {
 
     this.registerForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      email: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.email]),
       spendType: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       vendor: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-      invoiceAmount: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      invoiceAmount: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+(.[0-9]{0,2})?$')]),
       spendDate: new FormControl('', [Validators.required])
     });
 
