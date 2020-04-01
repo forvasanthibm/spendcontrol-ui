@@ -5,10 +5,9 @@ import { SharedModule } from '../shared/shared.module';
 
 import { SpendListComponent } from './spend-list/spend-list.component';
 import { SpendRoutingModule } from './spend-routing.module';
-//import { PatientDetailsComponent } from './send-details/spend-details.component';
-//import { PatientCreateComponent } from './spend-create/spend-create.component';
-//import { PatientUpdateComponent } from './spend-update/spend-update.component';
-//import { PatientDeleteComponent } from './spend-delete/patient-delete.component';
+import { SpendDetailsComponent } from './spend-details/spend-details.component';
+import { SpendCreateComponent } from './spend-create/spend-create.component';
+import { SpendUpdateComponent } from './spend-update/spend-update.component';
 
 @NgModule({
   imports: [
@@ -19,6 +18,9 @@ import { SpendRoutingModule } from './spend-routing.module';
   ],
   declarations: [
     SpendListComponent, 
+    SpendDetailsComponent,
+    SpendCreateComponent,
+    SpendUpdateComponent
   ]
 })
 export class SpendModule { }

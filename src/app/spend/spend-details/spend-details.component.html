@@ -1,0 +1,53 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="87%" fxFlex.xs="100%" style="border: 1;">
+
+    <mat-card-title fxLayoutAlign="center center">Registered Spend Details</mat-card-title>
+
+    <form [formGroup]="registerForm" autocomplete="off" novalidate>
+
+      <mat-card-content fxLayout="column wrap">
+        <div flex fxLayoutGap="30px">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+          </mat-form-field>
+        </div>
+        <div flex fxLayoutGap="30px">
+          <mat-label>Spend Type</mat-label>
+          <mat-radio-group formControlName="spendType" id="spendType">
+            <mat-radio-button *ngFor="let item of spendTypes" [checked]="item.checked" [value]="item.value">
+              {{item.option}}
+              &nbsp;
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div flex fxLayoutGap="30px">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Category" formControlName="category" id="category">
+          </mat-form-field>
+        </div>
+        <div flex fxLayoutGap="30px">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Vendor" formControlName="vendor" id="vendor">
+          </mat-form-field>
+        </div>
+        <div flex fxLayoutGap="30px">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Invoice Amount" formControlName="invoiceAmount" id="invoiceAmount">
+          </mat-form-field>
+        </div>
+        <div flex fxLayoutGap="30px">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Spend Date" formControlName="spendDate" id="spendDate">
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions style="text-align: center;">
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+
+    </form>
+
+  </mat-card>
+</section>

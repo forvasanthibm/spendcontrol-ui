@@ -4,7 +4,6 @@ import { SpendDetails } from '../../model/spend_details';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { MessageBoxButton, MessageBox } from 'src/app/shared/message-box';
-import { UserSpend } from 'src/app/model/user_spend';
 
 @Component({
   selector: 'app-spend-list',
@@ -20,9 +19,8 @@ export class SpendListComponent implements OnInit {
   }
 
   public dialogConfig;
-  public displayedColumnsParent = ['email', 'spendDetails', 'details', 'update', 'delete'];
-  public displayedColumnsChild = ['spendType', 'category', 'vendor', 'invoiceAmount', 'spendDate'];
-  public dataSourceParent = new MatTableDataSource<UserSpend>();
+  public displayedColumns = ['email', 'spendType', 'category', 'vendor', 'invoiceAmount', 'spendDate', 'details', 'update', 'delete'];
+  public dataSource = new MatTableDataSource<SpendDetails>();
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -33,9 +31,9 @@ export class SpendListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataSourceParent.paginator = this.paginator;
-    this.dataSourceParent.sort = this.sort;
-    this.dataSourceParent.filterPredicate = (data, filter: string) => {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.dataSource.filterPredicate = (data, filter: string) => {
       const accumulator = (currentTerm, key) => {
         return this.nestedFilterCheck(currentTerm, data, key);
       };
@@ -48,9 +46,9 @@ export class SpendListComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSourceParent.filter = filterValue.trim().toLowerCase();
-    if (this.dataSourceParent.paginator) {
-      this.dataSourceParent.paginator.firstPage();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
 
@@ -64,7 +62,7 @@ export class SpendListComponent implements OnInit {
 
     this.service.getData().subscribe(
       response => {
-        this.dataSourceParent.data = response;
+        this.dataSource.data = response;
       },
       error => {
       }

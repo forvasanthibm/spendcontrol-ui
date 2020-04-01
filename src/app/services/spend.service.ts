@@ -16,22 +16,22 @@ export class SpendService {
 
   getData() : Observable<any>{
     console.log(`${API_URL}/spend/get`);
-    return this.http.get(`${API_URL}/spend/get`);
+    return this.http.get(`${API_URL}/spend/get/spend`);
   }
 
   getDataById(id: String): Observable<any> {
-    return this.http.get(`${API_URL}/user/get/${id}`);
+    return this.http.get(`${API_URL}/spend/get/spend/${id}`);
   }
 
   saveData(spend: SpendDetails): Observable<any> {
-    return this.http.post(`${API_URL}/user/create`, spend);
+    return this.http.post(`${API_URL}/spend/create/spend`, spend);
   }
 
   updateData(id: String, spend: SpendDetails): Observable<any> {
-    return this.http.put(`${API_URL}/user/update/${id}`, spend);
+    return this.http.put(`${API_URL}/spend/update/spend/${id}`, spend);
   }
 
   deleteData(id: string): Observable<any> {
-    return this.http.delete(`${API_URL}/user/delete/${id}`);
+    return this.http.delete(`${API_URL}/spend/delete/spend/${id}`);
   }
 }

@@ -5,39 +5,30 @@
     </mat-form-field>
 </div>
 
-<table mat-table [dataSource]="dataSourceParent" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header width="200px">Email Address</th>
         <td mat-cell *matCellDef="let element">{{element.email}}</td>
     </ng-container>
-    <ng-container matColumnDef="spendDetails">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header width="200px">Spend Details</th>
-        <td mat-cell *matCellDef="let element">
-            <table mat-table [dataSource]="element.spendDetails" matSort>
-                <ng-container matColumnDef="spendType">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Spend Type</th>
-                    <td mat-cell *matCellDef="let element">{{element.spendType}}</td>
-                </ng-container>
-                <ng-container matColumnDef="category">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Category</th>
-                    <td mat-cell *matCellDef="let element">{{element.category}}</td>
-                </ng-container>
-                <ng-container matColumnDef="vendor">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Vendor</th>
-                    <td mat-cell *matCellDef="let element">{{element.vendor}}</td>
-                </ng-container>
-                <ng-container matColumnDef="invoiceAmount">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Invoice Amount</th>
-                    <td mat-cell *matCellDef="let element">{{element.invoiceAmount}}</td>
-                </ng-container>
-                <ng-container matColumnDef="spendDate">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Spend Date</th>
-                    <td mat-cell *matCellDef="let element">{{element.spendDate}}</td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumnsChild"></tr>
-                <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumnsChild;" [ngClass]="{gray: even}"></tr>
-            </table>
-        </td>
+    <ng-container matColumnDef="spendType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Spend Type</th>
+        <td mat-cell *matCellDef="let element">{{element.spendType}}</td>
+    </ng-container>
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Category</th>
+        <td mat-cell *matCellDef="let element">{{element.category}}</td>
+    </ng-container>
+    <ng-container matColumnDef="vendor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Vendor</th>
+        <td mat-cell *matCellDef="let element">{{element.vendor}}</td>
+    </ng-container>
+    <ng-container matColumnDef="invoiceAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Invoice Amount</th>
+        <td mat-cell *matCellDef="let element">{{element.invoiceAmount}}</td>
+    </ng-container>
+    <ng-container matColumnDef="spendDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header width="180px">Spend Date</th>
+        <td mat-cell *matCellDef="let element">{{element.spendDate}}</td>
     </ng-container>
 
     <ng-container matColumnDef="details">
@@ -65,8 +56,8 @@
         </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsParent"></tr>
-    <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumnsParent;" [ngClass]="{gray: even}"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;" [ngClass]="{gray: even}"></tr>
 </table>
 
 <mat-paginator #paginator [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"

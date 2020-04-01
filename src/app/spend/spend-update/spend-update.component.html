@@ -1,0 +1,79 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="87%" fxFlex.xs="100%" style="border: 1;">
+
+    <mat-card-title fxLayoutAlign="center center">Update existing Spend</mat-card-title>
+
+    <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="register(registerForm.value)">
+
+      <mat-card-content fxLayout="column wrap">
+
+        <div>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+            <mat-hint align="left">Not more then 50 characters long.</mat-hint>
+            <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+            <mat-error *ngIf="hasError('email', 'maxlength')">You have more than 50 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div flex fxLayoutGap="30px">
+          <mat-label>Spend Type</mat-label>
+          <mat-radio-group formControlName="spendType" id="spendType">
+            <mat-radio-button *ngFor="let item of spendTypes" [value]="item.value">
+              {{item.option}}
+              &nbsp;
+            </mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <mat-hint align="left" class="mat-hint-style">Spend Type is required</mat-hint>
+        </div>
+        <br>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Category" formControlName="category" id="category">
+            <mat-hint align="left">Not more then 30 characters long.</mat-hint>
+            <mat-error *ngIf="hasError('category', 'required')">Category is required</mat-error>
+            <mat-error *ngIf="hasError('category', 'maxlength')">You have more than 30 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Vendor" formControlName="vendor" id="vendor">
+            <mat-hint align="left">Not more then 30 characters long.</mat-hint>
+            <mat-error *ngIf="hasError('vendor', 'required')">Vendor is required</mat-error>
+            <mat-error *ngIf="hasError('vendor', 'maxlength')">You have more than 30 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Invoice Amount" formControlName="invoiceAmount" id="invoiceAmount">
+            <mat-hint align="left">Not more then 30 characters long.</mat-hint>
+            <mat-error *ngIf="hasError('invoiceAmount', 'required')">Invoice Amount is required</mat-error>
+            <mat-error *ngIf="hasError('invoiceAmount', 'maxlength')">You have more than 30 characters</mat-error>
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Select Spend Date" formControlName="spendDate"
+              id="spendDate" readonly (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint align="left">Spend Date is required</mat-hint>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions style="text-align: center;">
+        <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Update</button>
+        <!--button type="button" mat-raised-button color="warn" (click)="loginForm.reset()">Reset</button-->
+        <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+
+    </form>
+
+  </mat-card>
+</section>
