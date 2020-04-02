@@ -7,7 +7,7 @@
 
       <mat-card-content fxLayout="column wrap">
 
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-form-field>
             <input matInput type="text" placeholder="Email" formControlName="email" id="email">
             <mat-hint align="left">Not more then 50 characters long.</mat-hint>
@@ -17,7 +17,7 @@
           </mat-form-field>
         </div>
         <br>
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-label>Spend Type</mat-label>
           <mat-radio-group formControlName="spendType" id="spendType">
             <mat-radio-button *ngFor="let item of spendTypes" [value]="item.value">
@@ -29,7 +29,7 @@
           <mat-hint align="left" class="mat-hint-style">Spend Type is required</mat-hint>
         </div>
         <br>
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-form-field>
             <input matInput type="text" placeholder="Category" formControlName="category" id="category">
             <mat-hint align="left">Not more then 30 characters long.</mat-hint>
@@ -38,7 +38,7 @@
           </mat-form-field>
         </div>
         <br>
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-form-field>
             <input matInput type="text" placeholder="Vendor" formControlName="vendor" id="vendor">
             <mat-hint align="left">Not more then 30 characters long.</mat-hint>
@@ -47,7 +47,7 @@
           </mat-form-field>
         </div>
         <br>
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-form-field>
             <input matInput type="text" placeholder="Invoice Amount" formControlName="invoiceAmount"
               id="invoiceAmount">
@@ -58,7 +58,7 @@
           </mat-form-field>
         </div>
         <br>
-        <div>
+        <div flex fxLayoutGap="30px">
           <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Select Spend Date" formControlName="spendDate"
               id="spendDate" readonly (click)="picker.open()">
